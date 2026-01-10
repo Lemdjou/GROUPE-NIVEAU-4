@@ -11,7 +11,28 @@ void viderBuffer(){
 // FONCTION 1 : AJOUTER UN ÉTUDIANT
 
 // FONCTION 2 : MODIFIER UN ÉTUDIANT
+// FONCTION 2 : MODIFIER UN ÉTUDIANT
 
+void modifier(Etudiant etudiants[], int nb) {
+    char mat[20];
+    Etudiant *p = NULL;  
+    
+    printf("\n MODIFICATION \n");
+    printf("Matricule de l'etudiant : ");
+    scanf("%s", mat);
+    
+    // Recherche de l'étudiant avec pointeur
+    for (int i = 0; i < nb; i++) {
+        if (strcmp(etudiants[i].matricule, mat) == 0) {
+            p = &etudiants[i];  // Le pointeur pointe sur l'étudiant trouvé
+            break;
+        }
+    }
+    
+    if (p == NULL) {
+        printf("Etudiant non trouve !\n");
+        return;
+    }
 
 // FONCTION 3 : RECHERCHER PAR MATRICULE
 
