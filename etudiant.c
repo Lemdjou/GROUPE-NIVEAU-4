@@ -88,12 +88,72 @@ void modifier(Etudiant etudiants[], int nb) {
 
 
 // FONCTION 7 : CALCULER L'ÂGE
-
+void calculerAge(Etudiant etudiants[], int nb) {
+    char mat[20];
+    int trouve = -1;
+    
+    printf("\n CALCUL DE L'AGE \n");
+    printf("Matricule de l'etudiant : ");
+    scanf("%s", mat);
+    
+    for (int i = 0; i < nb; i++) {
+        if (strcmp(etudiants[i].matricule, mat) == 0) {
+            trouve = i;
+            break;
+        }
+    }
+    
+    if (trouve == -1) {
+        printf("Etudiant non trouve !\n");
+    } else {
+        int age = 2026 - etudiants[trouve].date_naissance.annee;
+        printf("L'etudiant %s %s a %d ans\n", 
+               etudiants[trouve].nom, 
+               etudiants[trouve].prenom, 
+               age);
+    }
+}
 
 // FONCTION 8 : TRIER PAR FILIÈRE
+void trierFiliere(Etudiant etudiants[], int nb) {
+    Etudiant temp;
+    
+    for (int i = 0; i < nb - 1; i++) {
+        for (int j = i + 1; j < nb; j++) {
+            if (strcmp(etudiants[i].filiere, etudiants[j].filiere) > 0) {
+                temp = etudiants[i];
+                etudiants[i] = etudiants[j];
+                etudiants[j] = temp;
+            }
+        }
+    }
+    printf("\nListe trieé par filiere !\n");
+}
 
 // FONCTION 9 : AFFICHER TOUS LES ÉTUDIANTS
-
+void afficher(Etudiant etudiants[], int nb) {
+    if (nb == 0) {
+        printf("\nAucun etudiant enregistre.\n");
+        return;
+    }
+    
+    printf("\n LISTE DES ETUDIANTS \n");
+    printf("Nombre total : %d\n\n", nb);
+    
+    for (int i = 0; i < nb; i++) {
+        printf("Etudiant %d :\n", i + 1);
+        printf("  Nom         : %s\n", etudiants[i].nom);
+        printf("  Prenom      : %s\n", etudiants[i].prenom);
+        printf("  Date naissance. : %d/%d/%d\n", 
+               etudiants[i].date_naissance.jour,
+               etudiants[i].date_naissance.mois,
+               etudiants[i].date_naissance.annee);
+        printf("  Departement : %s\n", etudiants[i].departement);
+        printf("  Filiere     : %s\n", etudiants[i].filiere);
+        printf("  Matricule   : %s\n", etudiants[i].matricule);
+        printf("  Region      : %s\n\n", etudiants[i].region_origine);
+    }
+}
 
 // MENU
 void menu() {
