@@ -10,6 +10,45 @@ void viderBuffer(){
 
 // FONCTION 1 : AJOUTER UN ÉTUDIANT
 
+
+void ajouter(Etudiant etudiants[], int *nb) {
+    if (*nb >= MAX_ETUDIANTS) {
+        printf("Le tableau est plein !\n");
+        return;
+    }
+    
+    printf("\n AJOUT D'UN ETUDIANT \n");
+    
+    printf("Nom : ");
+    scanf("%s", etudiants[*nb].nom);
+    
+    printf("Prenom : ");
+    scanf("%s", etudiants[*nb].prenom);
+    
+    printf("Jour de naissance : ");
+    scanf("%d", &etudiants[*nb].date_naissance.jour);
+    
+    printf("Mois de naissance : ");
+    scanf("%d", &etudiants[*nb].date_naissance.mois);
+    
+    printf("Annee de naissance : ");
+    scanf("%d", &etudiants[*nb].date_naissance.annee);
+    
+    printf("Departement : ");
+    scanf("%s", etudiants[*nb].departement);
+    
+    printf("Filiere : ");
+    scanf("%s", etudiants[*nb].filiere);
+    
+    printf("Matricule : ");
+    scanf("%s", etudiants[*nb].matricule);
+    
+    printf("Region d'origine : ");
+    scanf("%s", etudiants[*nb].region_origine);
+    
+    (*nb)++;
+    printf("\nEtudiant ajoute avec succes !\n");
+}
 // FONCTION 2 : MODIFIER UN ÉTUDIANT
 // FONCTION 2 : MODIFIER UN ÉTUDIANT
 
