@@ -50,7 +50,7 @@ void ajouter(Etudiant etudiants[], int *nb) {
     printf("\nEtudiant ajoute avec succes !\n");
 }
 // FONCTION 2 : MODIFIER UN ÉTUDIANT
-// FONCTION 2 : MODIFIER UN ÉTUDIANT
+
 
 void modifier(Etudiant etudiants[], int nb) {
     char mat[20];
