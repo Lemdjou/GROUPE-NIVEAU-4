@@ -72,22 +72,154 @@ void modifier(Etudiant etudiants[], int nb) {
         printf("Etudiant non trouve !\n");
         return;
     }
+// Utilisation du pointeur pour modifier
+    printf("Nouveau nom : ");
+    scanf("%s", p->nom);
+    
+    printf("Nouveau prenom : ");
+    scanf("%s", p->prenom);
+    
+    printf("Nouvelle date de naissance :\n");
+    printf("  Nouveau jour : ");
+    scanf("%d", &p->date_naissance.jour);
+    printf("  Nouveau mois : ");
+    scanf("%d", &p->date_naissance.mois);
+    printf("  Nouvelle annee : ");
+    scanf("%d", &p->date_naissance.annee);
+    
+    printf("Nouveau departement : ");
+    scanf("%s", p->departement);
+    
+    printf("Nouvelle filiere : ");
+    scanf("%s", p->filiere);
+    
+    printf("Nouvelle region : ");
+    scanf("%s", p->region_origine);
+    
+    printf("\nModification effectuée !\n");
+}
+
 
 // FONCTION 3 : RECHERCHER PAR MATRICULE
 
-
+void rechercher(Etudiant etudiants[], int nb) {
+    char mat[20];
+    int trouve = -1;
+    
+    printf("\n RECHERCHE \n");
+    printf("Matricule a rechercher : ");
+    scanf("%s", mat);
+    
+    for (int i = 0; i < nb; i++) {
+        if (strcmp(etudiants[i].matricule, mat) == 0) {
+            trouve = i;
+            break;
+        }
+    }
+    
+    if (trouve == -1) {
+        printf("Etudiant non trouve !\n");
+    } else {
+        printf("\n ETUDIANT TROUVE \n");
+        printf("Nom         : %s\n", etudiants[trouve].nom);
+        printf("Prenom      : %s\n", etudiants[trouve].prenom);
+        printf("Date naiss. : %d/%d/%d\n", 
+               etudiants[trouve].date_naissance.jour,
+               etudiants[trouve].date_naissance.mois,
+               etudiants[trouve].date_naissance.annee);
+        printf("Departement : %s\n", etudiants[trouve].departement);
+        printf("Filiere     : %s\n", etudiants[trouve].filiere);
+        printf("Matricule   : %s\n", etudiants[trouve].matricule);
+        printf("Region      : %s\n", etudiants[trouve].region_origine);
+    }
+}
 
 // FONCTION 4 : SUPPRIMER UN ÉTUDIANT
+
+void supprimer(Etudiant etudiants[], int *nb) {
+    char mat[20];
+    int trouve = -1;
+    
+    printf("\n SUPPRESSION \n");
+    printf("Matricule de l'etudiant a supprimer : ");
+    scanf("%s", mat);
+    
+    for (int i = 0; i < *nb; i++) {
+        if (strcmp(etudiants[i].matricule, mat) == 0) {
+            trouve = i;
+            break;
+        }
+    }
+    
+    if (trouve == -1) {
+        printf("Etudiant non trouvé !\n");
+        return;
+    }
+    
+    // Décalage des éléments
+    for (int j = trouve; j < *nb - 1; j++) {
+        etudiants[j] = etudiants[j + 1];
+    }
+    
+    (*nb)--;
+    printf("Etudiant supprime avec succes !\n");
+}
 
 
 
 // FONCTION 5 : TRIER PAR NOM
+void trierNom(Etudiant etudiants[], int nb) {
+    Etudiant temp;
+    
+    for (int i = 0; i < nb - 1; i++) {
+        for (int j = i + 1; j < nb; j++) {
+            if (strcmp(etudiants[i].nom, etudiants[j].nom) > 0) {
+                temp = etudiants[i];
+                etudiants[i] = etudiants[j];
+                etudiants[j] = temp;
+            }
+        }
+    }
+    printf("\nListe trieé par nom !\n");
+}
 
 
 // FONCTION 6 : RECHERCHE DICHOTOMIQUE
+void rechercheDicho(Etudiant etudiants[], int nb) {
+    char mat[20];
+    int debut = 0, fin = nb - 1, milieu;
+    int trouve = -1;
+    
+    printf("\n RECHERCHE DICHOTOMIQUE \n");
+    printf("Le tableau doit etre trie par matricule !\n");
+    printf("Matricule à rechercher : ");
+    scanf("%s", mat);
+    
+    while (debut <= fin && trouve == -1) {
+        milieu = (debut + fin) / 2;
+        
+        int cmp = strcmp(etudiants[milieu].matricule, mat);
+        
+        if (cmp == 0) {
+            trouve = milieu;
+        } else if (cmp < 0) {
+            debut = milieu + 1;
+        } else {
+            fin = milieu - 1;
+        }
+    }
+    
+    if (trouve == -1) {
+        printf("Etudiant non trouve !\n");
+    } else {
+        printf("Etudiant trouve : %s %s\n", 
+               etudiants[trouve].nom, etudiants[trouve].prenom);
+    }
+}
 
 
-// FONCTION 7 : CALCULER L'ÂGE
+
+// FONCTION 7 : CALCULER L'AGE
 void calculerAge(Etudiant etudiants[], int nb) {
     char mat[20];
     int trouve = -1;
@@ -114,7 +246,7 @@ void calculerAge(Etudiant etudiants[], int nb) {
     }
 }
 
-// FONCTION 8 : TRIER PAR FILIÈRE
+// FONCTION 8 : TRIER PAR FILIERE
 void trierFiliere(Etudiant etudiants[], int nb) {
     Etudiant temp;
     
@@ -127,7 +259,7 @@ void trierFiliere(Etudiant etudiants[], int nb) {
             }
         }
     }
-    printf("\nListe trieé par filiere !\n");
+    printf("\nListe triee par filiere !\n");
 }
 
 // FONCTION 9 : AFFICHER TOUS LES ÉTUDIANTS
