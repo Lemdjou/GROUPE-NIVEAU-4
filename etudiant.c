@@ -2,7 +2,6 @@
 #include <stdio.h>
 #include <string.h>
 #include "etudiant.h"
-
 void viderBuffer(){
     int c;
     while((c = getchar()) != '\n' && c != EOF);
