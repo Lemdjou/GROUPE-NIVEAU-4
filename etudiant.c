@@ -166,8 +166,8 @@ void supprimer(Etudiant etudiants[], int *nb) {
 }
 
 
-
 // FONCTION 5 : TRIER PAR NOM
+
 void trierNom(Etudiant etudiants[], int nb) {
     Etudiant temp;
     
@@ -185,6 +185,7 @@ void trierNom(Etudiant etudiants[], int nb) {
 
 
 // FONCTION 6 : RECHERCHE DICHOTOMIQUE
+
 void rechercheDicho(Etudiant etudiants[], int nb) {
     char mat[20];
     int debut = 0, fin = nb - 1, milieu;
@@ -216,9 +217,6 @@ void rechercheDicho(Etudiant etudiants[], int nb) {
                etudiants[trouve].nom, etudiants[trouve].prenom);
     }
 }
-
-
-
 // FONCTION 7 : CALCULER L'AGE
 void calculerAge(Etudiant etudiants[], int nb) {
     char mat[20];
