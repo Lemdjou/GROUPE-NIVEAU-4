@@ -71,6 +71,7 @@ void modifier(Etudiant etudiants[], int nb) {
         printf("Etudiant non trouve !\n");
         return;
     }
+
 // Utilisation du pointeur pour modifier
     printf("Nouveau nom : ");
     scanf("%s", p->nom);
@@ -132,7 +133,6 @@ void rechercher(Etudiant etudiants[], int nb) {
         printf("Region      : %s\n", etudiants[trouve].region_origine);
     }
 }
-
 // FONCTION 4 : SUPPRIMER UN ÉTUDIANT
 
 void supprimer(Etudiant etudiants[], int *nb) {
