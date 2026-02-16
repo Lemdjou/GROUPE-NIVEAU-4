@@ -99,7 +99,6 @@ void modifier(Etudiant etudiants[], int nb) {
     printf("\nModification effectuée !\n");
 }
 
-
 // FONCTION 3 : RECHERCHER PAR MATRICULE
 
 void rechercher(Etudiant etudiants[], int nb) {
@@ -121,18 +120,18 @@ void rechercher(Etudiant etudiants[], int nb) {
         printf("Etudiant non trouve !\n");
     } else {
         printf("\n ETUDIANT TROUVE \n");
-        printf("Nom         : %s\n", etudiants[trouve].nom);
-        printf("Prenom      : %s\n", etudiants[trouve].prenom);
+        printf("Nom : %s\n", etudiants[trouve].nom);
+        printf("Prenom : %s\n", etudiants[trouve].prenom);
         printf("Date naiss. : %d/%d/%d\n", 
                etudiants[trouve].date_naissance.jour,
                etudiants[trouve].date_naissance.mois,
                etudiants[trouve].date_naissance.annee);
         printf("Departement : %s\n", etudiants[trouve].departement);
-        printf("Filiere     : %s\n", etudiants[trouve].filiere);
-        printf("Matricule   : %s\n", etudiants[trouve].matricule);
-        printf("Region      : %s\n", etudiants[trouve].region_origine);
+        printf("Filiere : %s\n", etudiants[trouve].filiere);
+        printf("Matricule : %s\n", etudiants[trouve].matricule);
+        printf("Region : %s\n", etudiants[trouve].region_origine);
     }
-}
+}            
 // FONCTION 4 : SUPPRIMER UN ÉTUDIANT
 
 void supprimer(Etudiant etudiants[], int *nb) {
